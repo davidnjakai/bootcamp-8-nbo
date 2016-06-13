@@ -1,2 +1,6 @@
-# bootcamp-8-nbo
-Escapades during @Andela cohort 8 NBO
+# TIA
+Welcome to [Andela](https://andela.com/about-us)
+
+> we hold these truths to be self evident:
+- Brilliance is evenly distributed, opportunity is not
+- Talent is gender neutral
