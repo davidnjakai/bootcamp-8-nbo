@@ -19,7 +19,14 @@ class NotesApplication(object):
 		else:
 			print("Sorry, no such id")
 	def search(self, search_text):
-		pass
+		for i in self.notes:
+			id=0
+			if search_text in i:
+				print("Showing results for search'", search_text, "'")
+				print("Note ID: ", id)
+				print(i)
+				print("By Author ", self.author)
+			id+=1
 	def edit(self, note_id, new_content):
 		if note_id < len(self.notes) and note_id >= 0:	
 			self.notes[note_id]=new_content
