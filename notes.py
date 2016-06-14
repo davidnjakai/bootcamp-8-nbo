@@ -6,8 +6,8 @@ class NotesApplication(object):
 		self.notes.append(note_content)
 	def list(self):
 		if self.notes != [""]:
+			id=0
 			for i in self.notes:
-				id=0
 				print("Note ID: ",id)
 				print(self.notes[id])
 				id+=1
@@ -20,8 +20,8 @@ class NotesApplication(object):
 		else:
 			print("Sorry, no such id")
 	def search(self, search_text):
+		id=0
 		for i in self.notes:
-			id=0
 			if search_text in i:
 				print("Showing results for search'", search_text, "'")
 				print("Note ID: ", id)
@@ -35,4 +35,5 @@ class NotesApplication(object):
 			print("sorry, the note you're trying to edit does not exist")
 mynote=NotesApplication('David Njakai',['this is my first note', 'this is my second note'])
 mynote.list()
-
+mynote.create("This is a third note")
+mynote.list()
