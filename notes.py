@@ -22,10 +22,10 @@ class NotesApplication(object):
 	def search(self, search_text):
 		id=0
 		none_found = True
+		print("Showing results for search'", search_text, "'")
 		for i in self.notes:
 			if search_text in i:
 				none_found = False
-				print("Showing results for search'", search_text, "'")
 				print("Note ID: ", id)
 				print(i)
 				print("By Author ", self.author)
