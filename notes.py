@@ -9,6 +9,7 @@ class NotesApplication(object):
 			for i in self.notes:
 				id=0
 				print("Note ID: ",id)
+				print(self.notes[id])
 				id+=1
 				print("By Author ",self.author)
 		else:
@@ -32,5 +33,6 @@ class NotesApplication(object):
 			self.notes[note_id]=new_content
 		else:
 			print("sorry, the note you're trying to edit does not exist")
-
+mynote=NotesApplication('David Njakai',['this is my first note', 'this is my second note'])
+mynote.list()
 
