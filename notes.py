@@ -18,16 +18,20 @@ class NotesApplication(object):
 		if note_id < len(self.notes) and note_id >= 0:
 			return self.notes[note_id]
 		else:
-			print("Sorry, no such id")
+			return "Sorry, no such id"
 	def search(self, search_text):
 		id=0
+		none_found = True
 		for i in self.notes:
 			if search_text in i:
+				none_found = False
 				print("Showing results for search'", search_text, "'")
 				print("Note ID: ", id)
 				print(i)
 				print("By Author ", self.author)
 			id+=1
+		if none_found:
+			print("Sorry, your search does not match any notes")
 	def edit(self, note_id, new_content):
 		if note_id < len(self.notes) and note_id >= 0:	
 			self.notes[note_id]=new_content
@@ -36,4 +40,8 @@ class NotesApplication(object):
 mynote=NotesApplication('David Njakai',['this is my first note', 'this is my second note'])
 mynote.list()
 mynote.create("This is a third note")
+mynote.list()
+print(mynote.get(2))
+mynote.search("irs")
+mynote.edit(0,"This is and edited version of the first note")
 mynote.list()
