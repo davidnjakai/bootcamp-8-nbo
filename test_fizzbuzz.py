@@ -19,8 +19,3 @@ class FizzBuzzTest(unittest.TestCase):
 		"""Test returns fizzbuzz when input is divisible by fifteen 
 		"""
 		self.assertEqual(fizzbuzz.fizz_buzz(15), 'fizzbuzz')
-
-	def test_returns_true_when_input_is_integer(self):
-		"""Test returns True when input is and integer
-		"""
-		self.assertEqual(fizzbuzz.fi)
