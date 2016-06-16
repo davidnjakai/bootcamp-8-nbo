@@ -10,3 +10,7 @@ class NotesApplicationTest(unittest.TestCase):
 		note = notes.NotesApplication('Tester', [])
 		note.create('sample note')
 		self.assertEqual(note.notes[0], 'sample note')
+
+	def test_instance_of_class_NotesApplication(self):
+		note = notes.NotesApplication('Tester', [])
+		self.assertEqual(type(note), type(notes.NotesApplication('Sample', [])))
