@@ -14,3 +14,7 @@ class NotesApplicationTest(unittest.TestCase):
 	def test_instance_of_class_NotesApplication(self):
 		note = notes.NotesApplication('Tester', [])
 		self.assertEqual(type(note), type(notes.NotesApplication('Sample', [])))
+
+	def test_get_non_existent_id(self):
+		note = notes.NotesApplication('Tester', [])
+		self.assertEqual(note.get(1), "Sorry, no such id")
