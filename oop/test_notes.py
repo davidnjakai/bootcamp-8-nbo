@@ -18,3 +18,7 @@ class NotesApplicationTest(unittest.TestCase):
 	def test_get_non_existent_id(self):
 		note = notes.NotesApplication('Tester', [])
 		self.assertEqual(note.get(1), "Sorry, no such id")
+					
+	def test_search_function_in_empty_notes_list(self):
+		note = notes.NotesApplication('Tester', [])
+		self.assertEqual(note.search('searchstring'), "Sorry, your search does not match any notes")
