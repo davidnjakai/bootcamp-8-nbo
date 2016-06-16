@@ -9,7 +9,7 @@ class NotesApplication(object):
 
 
 	def list(self):
-		if self.notes != [""]:
+		if self.notes != []:
 			id=0
 			for i in self.notes:
 				print("Note ID: ",id)
