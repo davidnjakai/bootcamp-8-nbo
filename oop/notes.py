@@ -17,7 +17,7 @@ class NotesApplication(object):
 				id+=1
 				print("By Author ",self.author)
 		else:
-			print("Sorry, there are no notes to display")
+			return "Sorry, there are no notes to display"
 
 
 	def get(self, note_id):
@@ -49,11 +49,3 @@ class NotesApplication(object):
 			print("sorry, the note you're trying to edit does not exist")
 
 
-mynote=NotesApplication('David Njakai',['this is my first note', 'this is my second note'])
-mynote.list()
-mynote.create("This is a third note")
-mynote.list()
-print(mynote.get(2))
-mynote.search("irs")
-mynote.edit(0,"This is and edited version of the first note")
-mynote.list()
