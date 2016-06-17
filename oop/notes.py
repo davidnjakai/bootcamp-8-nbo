@@ -30,22 +30,28 @@ class NotesApplication(object):
 	def search(self, search_text):
 		id=0
 		none_found = True
-		print("Showing results for search'", search_text, "'")
+		res_dict = {}
+		res_list = []
+		res_dict['Header'] = "Showing results for search'", search_text, "'"
 		for i in self.notes:
 			if search_text in i:
 				none_found = False
-				print("Note ID: ", id)
-				print(i)
-				print("By Author ", self.author)
+				res_dict['Note ID'] = id
+				res_dict['Content'] = i
+				res_dict['Author'] = self.author
+				res_list.append(res_dict)
+
 			id+=1
+
 		if none_found:
-			print("Sorry, your search does not match any notes")
+			return "Sorry, your search does not match any notes"
+		else:
+			return res_list
 
 
 	def edit(self, note_id, new_content):
 		if note_id < len(self.notes) and note_id >= 0:	
 			self.notes[note_id]=new_content
 		else:
-			print("sorry, the note you're trying to edit does not exist")
-
+			return "sorry, the note you're trying to edit does not exist"
 
