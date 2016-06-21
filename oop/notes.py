@@ -1,11 +1,20 @@
 class NotesApplication(object):
 	def __init__(self,author,notes):
-		self.author=author
-		self.notes=notes
+		if type(notes) != type([]):
+			self.notes = 'Invalid notes, it should be a list'
+		else:
+			self.notes=notes
+		if type(author) != type(''):
+			self.author = 'Invalid author name, it should be a string'
+		else:
+			self.author = author
 
 
 	def create(self, note_content):
-		self.notes.append(note_content)
+		if type(note_content) != type(''):
+			return 'Invalid content, it should be a string'
+		else:
+			self.notes.append(note_content)
 
 
 	def list(self):
@@ -28,6 +37,8 @@ class NotesApplication(object):
 
 
 	def search(self, search_text):
+		if type(search_text) != type(''):
+			return 'search takes only a string as a parameter'
 		id=0
 		none_found = True
 		res_dict = {}
@@ -50,7 +61,11 @@ class NotesApplication(object):
 
 
 	def edit(self, note_id, new_content):
-		if note_id < len(self.notes) and note_id >= 0:	
+		if type(note_id) != type(1):
+			return 'sorry, invalid ID given'
+		if type(new_content) != type(''):
+			return 'Invalid content, it should be a string'
+		if note_id < len(self.notes) and note_id >= 0:
 			self.notes[note_id]=new_content
 		else:
 			return "sorry, the note you're trying to edit does not exist"

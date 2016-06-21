@@ -22,3 +22,27 @@ class NotesApplicationTest(unittest.TestCase):
 	def test_search_function_in_empty_notes_list(self):
 		note = notes.NotesApplication('Tester', [])
 		self.assertEqual(note.search('searchstring'), "Sorry, your search does not match any notes")
+
+	def test_notes_attribute_is_list(self):
+		note = notes.NotesApplication('Tester', 'invalid attribute')
+		self.assertEqual(note.notes, 'Invalid notes, it should be a list')
+
+	def test_author_attribute_is_string(self):
+		note = notes.NotesApplication(['Tester'], [])
+		self.assertEqual(note.author, 'Invalid author name, it should be a string')
+
+	def test_creation_of_non_string_note(self):
+		note = notes.NotesApplication('Tester', [])
+		self.assertEqual(note.create(872), 'Invalid content, it should be a string')
+
+	def test_none_string_in_search_method(self):
+		note = notes.NotesApplication('Tester', [])
+		self.assertEqual(note.search(23), 'search takes only a string as a parameter')
+
+	def test_edit_with_non_string_content(self):
+		note = notes.NotesApplication('Tester', ['my original note'])
+		self.assertEqual(note.edit(0, 78), 'Invalid content, it should be a string')
+
+	def test_edit_with_non_int_id_field(self):
+		note = notes.NotesApplication('Tester', ['my original note'])
+		self.assertEqual(note.edit('one', 'my edited note'), 'sorry, invalid ID given')
