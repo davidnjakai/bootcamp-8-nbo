@@ -65,4 +65,26 @@ class NotesApplicationTest(unittest.TestCase):
 		note = notes.NotesApplication('Tester', ['my first note', 'my second note', 'my third note'])
 		self.assertEqual(note.get(1), 'my second note')
 
-	
+	def test_search_with_no_matching_result(self):
+		note = notes.NotesApplication('Tester', ['my first note', 'my second note', 'my third note'])
+		self.assertEqual(note.search('dvorak'), 'Sorry, your search does not match any notes')
+
+	def test_searching_with_one_matching_note(self):
+		note = notes.NotesApplication('Tester', ['my first note', 'my second note', 'my third note'])
+		self.assertEqual(note.search('first'), [{'Header': "Showing results for search 'first'",\
+		 'Note ID': 0, 'Content': 'my first note', 'Author': 'Tester'}])
+
+	def test_searching_with_multiple_matching_notes(self):
+		note = notes.NotesApplication('Tester', ['my first note', 'my second note', 'my third note'])
+		self.assertEqual(note.search('my'), [{'Author': 'Tester', 'Note ID': 2, 'Content': 'my third note', 'Header': "Showing results for search 'my'"},\
+		 {'Author': 'Tester', 'Note ID': 2, 'Content': 'my third note', 'Header': "Showing results for search 'my'"},\
+		 {'Author': 'Tester', 'Note ID': 2, 'Content': 'my third note', 'Header': "Showing results for search 'my'"}])
+
+	def test_editing_of_non_existent_note(self):
+		note = notes.NotesApplication('Tester', ['my first note', 'my second note', 'my third note'])
+		self.assertEqual(note.edit(3, 'my new content'), 'sorry, the note you\'re trying to edit does not exist')
+
+	def test_editing_of_note_functions_as_required(self):
+		note = notes.NotesApplication('Tester', ['my first note', 'my second note', 'my third note'])
+		note.edit(1, 'edited second note')
+		self.assertListEqual(note.notes, ['my first note', 'edited second note', 'my third note'])

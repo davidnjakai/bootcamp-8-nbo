@@ -43,7 +43,7 @@ class NotesApplication(object):
 		none_found = True
 		res_dict = {}
 		res_list = []
-		res_dict['Header'] = "Showing results for search'", search_text, "'"
+		res_dict['Header'] = "Showing results for search '{0}'".format(search_text)
 		for i in self.notes:
 			if search_text in i:
 				none_found = False
@@ -69,4 +69,3 @@ class NotesApplication(object):
 			self.notes[note_id]=new_content
 		else:
 			return "sorry, the note you're trying to edit does not exist"
-
