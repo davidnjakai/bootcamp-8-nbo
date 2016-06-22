@@ -46,3 +46,23 @@ class NotesApplicationTest(unittest.TestCase):
 	def test_edit_with_non_int_id_field(self):
 		note = notes.NotesApplication('Tester', ['my original note'])
 		self.assertEqual(note.edit('one', 'my edited note'), 'sorry, invalid ID given')
+
+	def test_notes_attribute(self):
+		note = notes.NotesApplication('Tester', ['my first note'])
+		self.assertListEqual(note.notes, ['my first note'])
+
+	def test_creation_of_extra_notes(self):
+		note = notes.NotesApplication('Tester', ['my first note'])
+		note.create('my second note')
+		note.create('my third note')
+		self.assertListEqual(note.notes, ['my first note', 'my second note', 'my third note'])
+
+	def test_listing_of_notes_returns_None(self):
+		note = notes.NotesApplication('Tester', ['my first note'])
+		self.assertIsNone(note.list())
+
+	def test_get_method_returns_required_note(self):
+		note = notes.NotesApplication('Tester', ['my first note', 'my second note', 'my third note'])
+		self.assertEqual(note.get(1), 'my second note')
+
+	
